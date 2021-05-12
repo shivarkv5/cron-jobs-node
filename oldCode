@@ -1,0 +1,39 @@
+package com.vodnala.shivaramakrishna.exam2p1;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import org.json.simple.parser.JSONParser;
+import org.json.JSONObject;
+//import org.json.simple.parser.JSONParser;
+
+/**
+ * Hello world!
+ *
+ */
+public class App {
+
+    public static void main(String[] args) throws FileNotFoundException, IOException, Exception {
+
+        ClassLoader cl = new App().getClass().getClass().getClassLoader();
+        String fName = "com/vodnala/shivaramakrishna/exam2p1/info.json";
+        File file = new File(cl.getResource(fName).getFile());
+
+        JSONParser jp = new JSONParser();
+        
+        try{
+            FileReader  reader = new FileReader(file.getAbsolutePath());
+            Object obj = jp.parse(reader);
+            
+            JSONObject jo = (JSONObject).obj;
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+
+    }
+}
